@@ -57,7 +57,7 @@ const App = () => {
         {!showQuestion && (
           <div>
             <h2>Scan to Join</h2>
-            <QRCode value={`http://${window.location.hostname}:3000`} />
+            <QRCode value={`https://indroydlabs-assignment.netlify.app/`} />
           </div>
         )}
 
