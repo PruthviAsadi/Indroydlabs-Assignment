@@ -1,0 +1,27 @@
+[
+  {
+    "question": "What is the capital of India?",
+    "options": ["A. Mumbai", "B. New Delhi", "C. Kolkata", "D. Bangalore"],
+    "correct": "B"
+  },
+  {
+    "question": "Who was the first Prime Minister of India?",
+    "options": ["A. Jawaharlal Nehru", "B. Sardar Vallabhbhai Patel", "C. Mahatma Gandhi", "D. Lal Bahadur Shastri"],
+    "correct": "A"
+  },
+  {
+    "question": "Which is the national animal of India?",
+    "options": ["A. Lion", "B. Tiger", "C. Elephant", "D. Peacock"],
+    "correct": "B"
+  },
+  {
+    "question": "What is the official currency of India?",
+    "options": ["A. Dollar", "B. Euro", "C. Rupee", "D. Yen"],
+    "correct": "C"
+  },
+  {
+    "question": "Which festival is known as the Festival of Lights?",
+    "options": ["A. Holi", "B. Diwali", "C. Eid", "D. Christmas"],
+    "correct": "B"
+  }
+]

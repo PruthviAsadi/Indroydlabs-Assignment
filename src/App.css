@@ -1,0 +1,126 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Main screen styles */
+.main-screen {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.main-screen h2 {
+  margin-bottom: 10px;
+}
+
+.main-screen ul {
+  margin-bottom: 20px;
+}
+
+.main-screen ul li {
+  padding: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Question and options styling */
+.question-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.question-section ul {
+  padding: 0;
+}
+
+.question-section ul li {
+  background-color: #ddd;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.question-section ul li:hover {
+  background-color: #ccc;
+}
+
+/* Mobile screen styles */
+.mobile-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto; /* Centering */
+  text-align: center;
+}
+
+.mobile-container input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.mobile-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mobile-container button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Winner message */
+.winner {
+  color: green;
+  font-weight: bold;
+  margin-top: 20px;
+}
