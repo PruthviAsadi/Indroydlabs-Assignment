@@ -9,6 +9,7 @@ const App = () => {
   const [playerAnswers, setPlayerAnswers] = useState({}); // Store player answers
   const [showQuestion, setShowQuestion] = useState(false); // Control question display
   const [correctPlayer, setCorrectPlayer] = useState(null); // Store the correct player's name
+  const [playerHasJoined, setPlayerHasJoined] = useState(false); // Track if a player has joined on mobile
 
   // Load questions from JSON
   const questions = questionsData;
@@ -18,6 +19,7 @@ const App = () => {
     if (name && !players.some(player => player.name === name)) { // Prevent duplicate players
       setPlayers([...players, { name, score: 0 }]);
       setShowQuestion(true); // Show questions after joining
+      setPlayerHasJoined(true); // Indicate that a player has joined
     }
   };
 
@@ -61,8 +63,8 @@ const App = () => {
           </div>
         )}
 
-        {/* Display the current question */}
-        {showQuestion && currentQuestionIndex < questions.length && (
+        {/* Display the current question only if no one has joined on mobile */}
+        {!playerHasJoined && showQuestion && currentQuestionIndex < questions.length && (
           <QuestionSection 
             question={questions[currentQuestionIndex]} 
             onAnswer={handleAnswer} 
@@ -77,21 +79,26 @@ const App = () => {
           </div>
         )}
 
-        {/* End of game */}
-        {currentQuestionIndex >= questions.length && <h2>Game Over!</h2>}
+        {/* Display the Game Over message only when the quiz is done */}
+        {currentQuestionIndex >= questions.length && (
+          <div className="game-over">
+            <h2>Game Over!</h2>
+          </div>
+        )}
       </div>
 
       {/* Mobile view for players */}
-      <MobileView
-        onJoin={handleJoin}
-        currentQuestion={showQuestion && currentQuestionIndex < questions.length ? questions[currentQuestionIndex] : null}
-        playerAnswers={playerAnswers}
-        setShowQuestion={setShowQuestion}
-        players={players}
-        handleAnswer={handleAnswer}
-        currentQuestionIndex={currentQuestionIndex}
-        totalQuestions={questions.length}
-      />
+      {currentQuestionIndex < questions.length && (
+        <MobileView
+          onJoin={handleJoin}
+          currentQuestion={showQuestion && currentQuestionIndex < questions.length ? questions[currentQuestionIndex] : null}
+          playerAnswers={playerAnswers}
+          players={players}
+          handleAnswer={handleAnswer}
+          currentQuestionIndex={currentQuestionIndex}
+          totalQuestions={questions.length}
+        />
+      )}
     </div>
   );
 };
@@ -111,7 +118,7 @@ const QuestionSection = ({ question, onAnswer }) => (
 );
 
 // Mobile View Component
-const MobileView = ({ onJoin, currentQuestion, playerAnswers, setShowQuestion, players, handleAnswer }) => {
+const MobileView = ({ onJoin, currentQuestion, playerAnswers, players, handleAnswer }) => {
   const [name, setName] = useState("");
   const [hasJoined, setHasJoined] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -120,7 +127,6 @@ const MobileView = ({ onJoin, currentQuestion, playerAnswers, setShowQuestion, p
     if (name) {
       onJoin(name); // Add the player
       setHasJoined(true);
-      setShowQuestion(true); // Show the question once the player joins
     }
   };
 
@@ -148,7 +154,7 @@ const MobileView = ({ onJoin, currentQuestion, playerAnswers, setShowQuestion, p
         </div>
       )}
 
-      {/* Once joined, display the question */}
+      {/* Once joined, display the question in mobile view */}
       {hasJoined && currentQuestion && (
         <div>
           <h2>{currentQuestion.question}</h2>
